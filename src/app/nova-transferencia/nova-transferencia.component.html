@@ -5,12 +5,17 @@
 
     <div class="form-field">
       <label class="form-field__label" for="valor"> Valor</label>
-      <input class="form-field__input" id="valor" type="text">
+      <!-- [(ngModel)] use of square brackets and parentheses = 2 way data binding. I'm passing a variable to an Angular prop and it will be updated.
+        The value will be transmited in both ways: component <-> template.
+        This variable has to be declared in the .ts file.
+        If I use only a property bind [], the value will be transmited only from template -> component.
+      -->
+      <input class="form-field__input" id="valor" type="text" [(ngModel)] ="valor" name="valor">
     </div>
 
     <div class="form-field">
       <label class="form-field__label" for="destino"> Destino</label>
-      <input class="form-field__input" id="destino" type="text">
+      <input class="form-field__input" id="destino" type="text" [(ngModel)]="destino" name="destino">
     </div>
 
     <div class="botao-wrapper">
