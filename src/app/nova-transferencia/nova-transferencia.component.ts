@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 // All the components need a prefix, in this project we are using "app". Check Angular.json
 @Component({
@@ -8,14 +8,24 @@ import { Component } from '@angular/core';
 })
 export class NovaTransferenciaComponent {
 
-  // valor: number;
-  // destino: number;
-  valor: number = 0;
-  destino: number = 123;
+  //@Output -> Property to send data to outside.
+  //Any is a typescript resource that says that this type can be any one. For now, we set any, but int the future we should specify it.
+  @Output() aoTransferir = new EventEmitter<any>();
+
+  valor: number;
+  destino: number;
 
   transferir() {
     console.log('Solicitado nova transferência!');
-    console.log('Valor: ' + this.valor);
-    console.log('Destino: ' + this.destino);
+
+    const valorEmitir = {valor: this.valor, destino: this.destino};
+    this.aoTransferir.emit(valorEmitir);
+
+    this.limparCampos();
+  }
+
+  limparCampos(){
+    this.valor = 0;
+    this.destino = 0;
   }
 }
